@@ -1,17 +1,45 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <form>
+      <div class="mb-3">
+        <h1>Crea una Nueva Tarea</h1>
+        <label class="me-3">Tarea</label>
+        <input type="text" v-model="task" class="form-control w-50 d-inline" />
+      </div>
+      <button type="button" @click="showTask" class="btn btn-primary">
+        Crear
+      </button>
+    </form>
+    <div>
+      <h2 class="mt-2">Listado de Tareas</h2>
+      <ul v-if="show" class="list-group">
+        <li v-for="(ind, i) of newTask" :key="+i" class="list-task">
+          {{ i + ":" + ind }}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
 export default {
   name: "App",
-  components: {
-    HelloWorld,
+  data() {
+    return {
+      newTask: [],
+      show: true,
+      task: "",
+    };
+  },
+  methods: {
+    showTask() {
+      if (this.task == false) {
+        alert("Ingresar una tarea");
+      } else {
+        this.newTask.push(this.task);
+        return (this.task = "");
+      }
+    },
   },
 };
 </script>
@@ -24,5 +52,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.list-task {
+  align-self: flex-start;
+  margin-left: 35vw;
 }
 </style>
