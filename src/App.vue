@@ -55,6 +55,6 @@ export default {
 }
 .list-task {
   align-self: flex-start;
-  margin-left: 35vw;
+  margin-left: 34vw;
 }
 </style>
